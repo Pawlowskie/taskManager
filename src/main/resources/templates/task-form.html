@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Task Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Task Form</h1>
+        <form th:action="@{/tasks}" th:object="${task}" method="post">
+            <input type="hidden" th:field="*{id}" />
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" class="form-control" th:field="*{name}" />
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" id="description" class="form-control" th:field="*{description}" />
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" id="completed" class="form-check-input" th:field="*{completed}" />
+                <label class="form-check-label" for="completed">Completed</label>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

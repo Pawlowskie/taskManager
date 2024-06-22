@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Task List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Task List</h1>
+        <a href="/tasks/new" class="btn btn-success mb-3">Create New Task</a>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Completed</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="task : ${tasks}">
+                    <td th:text="${task.name}">Task Name</td>
+                    <td th:text="${task.description}">Task Description</td>
+                    <td th:text="${task.completed}">false</td>
+                    <td th:text="${task.formattedCreatedAt}">01/01/2022 12:00</td>
+                    <td>
+                        <a th:href="@{/tasks/edit/{id}(id=${task.id})}" class="btn btn-primary btn-sm">Edit</a>
+                        <a th:href="@{/tasks/delete/{id}(id=${task.id})}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
